@@ -45,14 +45,14 @@
 // };
 
 // // The "Unwise Assassin"
-// var move = function(gameData, helpers) {
-//   var myHero = gameData.activeHero;
-//   if (myHero.health < 30) {
-//     return helpers.findNearestHealthWell(gameData);
-//   } else {
-//     return helpers.findNearestEnemy(gameData);
-//   }
-// };
+ var move = function(gameData, helpers) {
+   var myHero = gameData.activeHero;
+   if (myHero.health < 30) {
+     return helpers.findNearestHealthWell(gameData);
+   } else {
+     return helpers.findNearestEnemy(gameData);
+   }
+ };
 
 // // The "Careful Assassin"
 // var move = function(gameData, helpers) {
@@ -65,30 +65,30 @@
 // };
 
 // // The "Safe Diamond Miner"
-var move = function(gameData, helpers) {
-  var myHero = gameData.activeHero;
+// var move = function(gameData, helpers) {
+//  var myHero = gameData.activeHero;
 
   //Get stats on the nearest health well
-  var healthWellStats = helpers.findNearestObjectDirectionAndDistance(gameData.board, myHero, function(boardTile) {
-    if (boardTile.type === 'HealthWell') {
-      return true;
-    }
-  });
-  var distanceToHealthWell = healthWellStats.distance;
-  var directionToHealthWell = healthWellStats.direction;
+//  var healthWellStats = helpers.findNearestObjectDirectionAndDistance(gameData.board, myHero, function(boardTile) {
+//    if (boardTile.type === 'HealthWell') {
+//      return true;
+//    }
+//  });
+//  var distanceToHealthWell = healthWellStats.distance;
+//  var directionToHealthWell = healthWellStats.direction;
   
 
-  if (myHero.health < 40) {
+//  if (myHero.health < 40) {
     //Heal no matter what if low health
-    return directionToHealthWell;
-  } else if (myHero.health < 100 && distanceToHealthWell === 1) {
+//    return directionToHealthWell;
+//  } else if (myHero.health < 100 && distanceToHealthWell === 1) {
     //Heal if you aren't full health and are close to a health well already
-    return directionToHealthWell;
-  } else {
+//    return directionToHealthWell;
+//  } else {
     //If healthy, go capture a diamond mine!
-    return helpers.findNearestNonTeamDiamondMine(gameData);
-  }
-};
+//    return helpers.findNearestNonTeamDiamondMine(gameData);
+//  }
+//};
 
 // // The "Selfish Diamond Miner" (captures teammates' diamond mines)
 // var move = function(gameData, helpers) {
