@@ -55,11 +55,23 @@
 // };
 
 // The "Deadly Assassin"
+  //Get stats on the nearest health well
+var healthWellStats = helpers.findNearestObjectDirectionAndDistance(gameData.board, myHero, function(boardTile) {
+  if (boardTile.type === 'HealthWell') {
+    return true;
+  }
+});
+var distanceToHealthWell = healthWellStats.distance;
+var directionToHealthWell = healthWellStats.direction;
+
+
 var move = function(gameData, helpers) {
   var myHero = gameData.activeHero;
   if (myHero.health < 30) {
    return helpers.findNearestHealthWell(gameData);
-  } else {
+  } else if (myHero.health < 100 && distanceToHealthWell === 1) {
+    return directionToHealthWell;
+    else {
    return helpers.findNearestEnemy(gameData);
   }
 };
