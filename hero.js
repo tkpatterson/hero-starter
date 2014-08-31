@@ -71,8 +71,7 @@ var move = function(gameData, helpers) {
    return helpers.findNearestHealthWell(gameData);
   } else if (myHero.health < 100 && distanceToHealthWell === 1) {
     return directionToHealthWell;
-  }
-    else {
+  } else {
    return helpers.findNearestEnemy(gameData);
   }
 };
